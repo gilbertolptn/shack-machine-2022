@@ -1,23 +1,44 @@
 package br.com.tt.snackmachine;
 
+import br.com.tt.snackmachine.model.Maquina;
+import br.com.tt.snackmachine.model.Posicao;
 import br.com.tt.snackmachine.model.Produto;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Aplicacao {
 
-    public static void main(String[] args) {
-        // cadastrar produtos
-        menuCadastroProduto();
-        // cadastrar uma Posição (fileira)
-        menuCadastroPosicao();
+    private static Maquina maquina = new Maquina(); //TODO explicar detalhadamente
 
-        // atualizar preço do produto
-        // buscar produto existente por código
-        // atualizar fileira já existente
+    public static void main(String[] args) {
+        menuPrincipal();
     }
 
-    private static void menuCadastroProduto(){
+    private static void menuPrincipal(){
+
+        JFrame frame = new JFrame("Snak Machine Java!");
+        frame.setLayout(new FlowLayout());
+//        frame.setSize(200, 200);
+
+        JButton botaoCadastroProduto = new JButton("Cadastrar Produto/Posição");
+        botaoCadastroProduto.addActionListener((e) -> menuCadastroProdutoEPosicao());
+        frame.add(botaoCadastroProduto);
+
+//        JButton botaoCadastroPosicao = new JButton("Cadastrar Posicao");
+//        botaoCadastroPosicao.addActionListener((e) -> menuCadastroPosicao());
+//        frame.add(botaoCadastroPosicao);
+
+        frame.pack(); // Ajusta o tamanho de acordo com os componentes
+        frame.setVisible(true);
+    }
+
+    private static void menuCadastroProdutoEPosicao() {
+        Produto produto = menuCadastroProduto();
+        menuCadastroPosicao(produto);
+    }
+
+    private static Produto menuCadastroProduto(){
         String codigo = JOptionPane.showInputDialog("Informe o código do produto");
         String preco = JOptionPane.showInputDialog("Informe o preço do produto");
 
@@ -27,8 +48,16 @@ public class Aplicacao {
         Produto produto = new Produto(codigoInt, precoFloat);
         String mensagem = "Produto cadastrado com sucesso: "+produto.getDescricao();
         JOptionPane.showMessageDialog(null, mensagem);
+        return produto;
     }
 
-    private static void menuCadastroPosicao(){
+    private static void menuCadastroPosicao(Produto produto){
+        byte numero = Byte.parseByte(JOptionPane.showInputDialog("Informar a posição (número)"));
+        byte quantidade = Byte.parseByte(JOptionPane.showInputDialog("Informar a quantidade de produtos colocados"));
+
+        Posicao posicao = new Posicao(numero, quantidade, produto);
+        String mensagem = "Posição cadastrada com sucesso: "+posicao.getDescricao();
+        JOptionPane.showMessageDialog(null, mensagem);
+        //maquina.adicionarPosicao(posicao); TODO implementar atribuição de posição
     }
 }
