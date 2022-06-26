@@ -6,6 +6,9 @@ import br.com.tt.snackmachine.model.Produto;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
 
 public class Aplicacao {
 
@@ -19,7 +22,7 @@ public class Aplicacao {
 
         JFrame frame = new JFrame("Snak Machine Java!");
         frame.setLayout(new FlowLayout());
-//        frame.setSize(200, 200);
+        frame.setSize(300, 400);
 
         JButton botaoCadastroProduto = new JButton("Cadastrar Produto/Posição");
         botaoCadastroProduto.addActionListener((e) -> menuCadastroProdutoEPosicao());
@@ -29,7 +32,7 @@ public class Aplicacao {
 //        botaoCadastroPosicao.addActionListener((e) -> menuCadastroPosicao());
 //        frame.add(botaoCadastroPosicao);
 
-        frame.pack(); // Ajusta o tamanho de acordo com os componentes
+        //frame.pack(); // Ajusta o tamanho de acordo com os componentes
         frame.setVisible(true);
     }
 
@@ -58,6 +61,6 @@ public class Aplicacao {
         Posicao posicao = new Posicao(numero, quantidade, produto);
         String mensagem = "Posição cadastrada com sucesso: "+posicao.getDescricao();
         JOptionPane.showMessageDialog(null, mensagem);
-        //maquina.adicionarPosicao(posicao); TODO implementar atribuição de posição
+        maquina.adicionarPosicao(posicao); //TODO implementar atribuição de posição
     }
 }
