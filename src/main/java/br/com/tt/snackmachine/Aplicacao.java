@@ -6,13 +6,10 @@ import br.com.tt.snackmachine.model.Produto;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Vector;
 
 public class Aplicacao {
 
-    private static Maquina maquina = new Maquina(); //TODO explicar detalhadamente
+    private static Maquina maquina = new Maquina((byte) 36); //TODO explicar detalhadamente
 
     public static void main(String[] args) {
         menuPrincipal();
@@ -59,8 +56,9 @@ public class Aplicacao {
         byte quantidade = Byte.parseByte(JOptionPane.showInputDialog("Informar a quantidade de produtos colocados"));
 
         Posicao posicao = new Posicao(numero, quantidade, produto);
+        // TODO validar número da posição
         String mensagem = "Posição cadastrada com sucesso: "+posicao.getDescricao();
         JOptionPane.showMessageDialog(null, mensagem);
-        maquina.adicionarPosicao(posicao); //TODO implementar atribuição de posição
+        maquina.adicionarPosicao(numero, posicao);
     }
 }
