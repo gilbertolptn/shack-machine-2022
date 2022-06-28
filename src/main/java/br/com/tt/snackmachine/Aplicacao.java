@@ -16,7 +16,6 @@ public class Aplicacao {
     }
 
     private static void menuPrincipal(){
-
         JFrame frame = new JFrame("Snak Machine Java!");
         frame.setLayout(new FlowLayout());
         frame.setSize(300, 400);

@@ -3,6 +3,12 @@ package br.com.tt.snackmachine.model;
 public class Maquina {
     private byte capacidade;
     private StatusMaquina status;
+
+    /*
+    Trocar array por uma lista que acharem mais adequada.
+
+    TODO: corrigir
+     */
     private Posicao[] posicoes;
 
     public Maquina(byte capacidade){
