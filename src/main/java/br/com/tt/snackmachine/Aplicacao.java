@@ -42,13 +42,12 @@ public class Aplicacao {
         String codigo = JOptionPane.showInputDialog("Informe o código do produto");
         String preco = JOptionPane.showInputDialog("Informe o preço do produto");
 
-        // Código do produto deve ser informado ( != "" )
-        // Preço do produto deve ser informado ( != "" )
-
-        //try/catch - relançar uma exceção específica
+        //try/catch pra NumberFormatException - relançar uma exceção específica
         int codigoInt = Integer.parseInt(codigo);
-
         float precoFloat = Float.parseFloat(preco);
+
+        // Código do produto deve ser informado ( > 0 )
+        // Preço do produto deve ser informado ( > 0 )
 
         Produto produto = new Produto(codigoInt, precoFloat);
         String mensagem = "Produto cadastrado com sucesso: "+produto.getDescricao();
