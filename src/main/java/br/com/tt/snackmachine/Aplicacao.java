@@ -42,7 +42,12 @@ public class Aplicacao {
         String codigo = JOptionPane.showInputDialog("Informe o código do produto");
         String preco = JOptionPane.showInputDialog("Informe o preço do produto");
 
+        // Código do produto deve ser informado ( != "" )
+        // Preço do produto deve ser informado ( != "" )
+
+        //try/catch - relançar uma exceção específica
         int codigoInt = Integer.parseInt(codigo);
+
         float precoFloat = Float.parseFloat(preco);
 
         Produto produto = new Produto(codigoInt, precoFloat);
@@ -66,6 +71,7 @@ public class Aplicacao {
         // TODO validar número da posição
         String mensagem = "Posição cadastrada com sucesso: "+posicao.getDescricao();
         JOptionPane.showMessageDialog(null, mensagem);
+
         maquina.adicionarPosicao(numero, posicao);
     }
 }
