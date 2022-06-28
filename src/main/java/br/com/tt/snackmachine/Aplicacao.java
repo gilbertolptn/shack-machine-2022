@@ -1,5 +1,6 @@
 package br.com.tt.snackmachine;
 
+import br.com.tt.snackmachine.exceptions.PosicaoInvalidaException;
 import br.com.tt.snackmachine.model.Maquina;
 import br.com.tt.snackmachine.model.Posicao;
 import br.com.tt.snackmachine.model.Produto;
@@ -53,6 +54,13 @@ public class Aplicacao {
     private static void menuCadastroPosicao(Produto produto){
         byte numero = Byte.parseByte(JOptionPane.showInputDialog("Informar a posição (número)"));
         byte quantidade = Byte.parseByte(JOptionPane.showInputDialog("Informar a quantidade de produtos colocados"));
+
+        if(numero < 1 || numero > 12){
+//            RuntimeException e = new PosicaoInvalidaException();
+//            throw e;
+            String mensagem = "Informe posição de 1 a 12. A posição informada foi: "+numero;
+            throw new PosicaoInvalidaException(mensagem);
+        }
 
         Posicao posicao = new Posicao(numero, quantidade, produto);
         // TODO validar número da posição
