@@ -1,11 +1,11 @@
 package br.com.tt.snackmachine.model;
 
 public class Posicao {
-    private byte numero;
-    private byte quantidade;
+    private int numero;
+    private int quantidade;
     private Produto produto;
 
-    public Posicao(byte numero, byte quantidade, Produto produto){
+    public Posicao(int numero, int quantidade, Produto produto){
         this.numero = numero;
         this.quantidade = quantidade;
         this.produto = produto;
@@ -14,5 +14,9 @@ public class Posicao {
     public String getDescricao(){
         return String.format("Posição Nro: %d, Quantidade: %d,\nProduto: %s",
                 numero, quantidade, produto.getDescricao());
+    }
+
+    public Produto getProduto() {
+        return produto;
     }
 }
